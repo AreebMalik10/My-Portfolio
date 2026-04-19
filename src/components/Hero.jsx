@@ -114,6 +114,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll down arrow */}
+      <div className="mt-10"> 
       <button
         onClick={scrollDown}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-600 hover:text-purple-400 transition-colors animate-bounce"
@@ -121,6 +122,7 @@ export default function Hero() {
       >
         <ChevronDown size={28} /> 
       </button>
+      </div>
     </section>
   );
 }
