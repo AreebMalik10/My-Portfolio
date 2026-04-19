@@ -120,7 +120,7 @@ export default function Hero() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-600 hover:text-purple-400 transition-colors animate-bounce"
         aria-label="Scroll down"
       >
-        <ChevronDown size={28} />
+        <ChevronDown size={28} />  //icon
       </button>
     </section>
   );
