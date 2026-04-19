@@ -29,33 +29,52 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 px-6 max-w-6xl mx-auto">
-        <div className="flex flex-col-reverse md:flex-row items-center gap-10">
+      <div className="relative z-10 px-6 max-w-6xl mx-auto w-full mt-16">
+
+        {/* Badge — centered at top */}
+        <div className="flex justify-center mb-8">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-sm font-medium">
+            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+            Available for Work
+          </span>
+        </div>
+
+        {/* Two-column: text + image */}
+        <div className="flex flex-col-reverse md:flex-row items-center gap-10 mb-10">
           {/* Text column */}
           <div className="w-full md:w-2/3 text-center md:text-left">
-        {/* Badge */}
-        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-sm font-medium mb-6">
-          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-          Available for Work
-        </span>
+            {/* Name */}
+            <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-4 leading-tight">
+              {personalInfo.name}
+            </h1>
 
-        {/* Name */}
-        <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-4 leading-tight">
-          {personalInfo.name}
-        </h1>
+            {/* Title */}
+            <h2 className="text-2xl md:text-3xl font-semibold bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
+              {personalInfo.title}
+            </h2>
 
-        {/* Title */}
-        <h2 className="text-2xl md:text-3xl font-semibold bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
-          {personalInfo.title}
-        </h2>
+            {/* Summary */}
+            <p className="text-gray-400 text-lg md:text-xl leading-relaxed">
+              {personalInfo.summary}
+            </p>
+          </div>
 
-        {/* Summary */}
-        <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-          {personalInfo.summary}
-        </p>
+          {/* Image column */}
+          <div className="w-full md:w-1/3 flex justify-center md:justify-end">
+            <div className="w-48 h-48 md:w-72 md:h-72 rounded-full p-1 bg-transparent ring-2 ring-white/5 shadow-2xl overflow-hidden">
+              <div className="w-full h-full rounded-full overflow-hidden bg-transparent flex items-center justify-center">
+                <img
+                  src={profileImg}
+                  alt={personalInfo.name}
+                  className="w-full h-full object-contain object-center"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
 
-        {/* Contact chips */}
-        <div className="flex flex-wrap justify-center gap-3 mb-10 text-sm text-gray-400">
+        {/* Contact chips — full-width centered */}
+        <div className="flex flex-wrap justify-center gap-3 mb-8 text-sm text-gray-400">
           <a
             href={`mailto:${personalInfo.email}`}
             className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-800/60 border border-gray-700 hover:border-purple-500/50 hover:text-purple-400 transition-colors"
@@ -70,14 +89,10 @@ export default function Hero() {
             <Phone size={14} />
             {personalInfo.phone}
           </a>
-          {/* <span className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-800/60 border border-gray-700">
-            <MapPin size={14} />
-            {personalInfo.location}
-          </span> */}
         </div>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-14">
+        {/* CTA Buttons — full-width centered */}
+        <div className="flex flex-wrap justify-center gap-4 pb-10">
           <a
             href="#experience"
             onClick={(e) => {
@@ -96,22 +111,6 @@ export default function Hero() {
           </a>
         </div>
 
-        </div>
-
-          {/* Image column */}
-         
-            <div className="w-full md:w-1/3 flex justify-center md:justify-end">
-              <div className="w-48 h-48 md:w-72 md:h-72 rounded-full p-1 bg-transparent ring-2 ring-white/5 shadow-2xl overflow-hidden md:-translate-y-8">
-                <div className="w-full h-full rounded-full overflow-hidden bg-transparent flex items-center justify-center">
-                  <img
-                    src={profileImg}
-                    alt={personalInfo.name}
-                    className="w-full h-full object-contain object-center"
-                  />
-                </div>
-              </div>
-            </div>
-        </div>
       </div>
 
       {/* Scroll down arrow */}
