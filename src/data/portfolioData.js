@@ -4,8 +4,8 @@ export const personalInfo = {
   email: "areeb9273@gmail.com",
   phone: "03175005188",
   location: "F6/1, Islamabad",
-  linkedin: "https://linkedin.com",
-  github: "https://github.com",
+  linkedin: "https://www.linkedin.com/in/muhammad-areeb-a97755237/",
+  github: "https://github.com/AreebMalik10",
   summary:
     "Full Stack Developer specialize in building modern web and mobile applications. I create clean, responsive, and user-friendly web interfaces using React.js, Redux, and Tailwind CSS. For mobile apps, I develop smooth and native-like experiences with React Native. I enjoy turning ideas into high-quality, production-ready products — whether it’s large web platforms or secure mobile applications.",
 };
