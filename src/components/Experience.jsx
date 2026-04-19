@@ -8,11 +8,11 @@ function ProjectCard({ project }) {
     <div className="bg-gray-800/40 border border-gray-700/50 rounded-xl overflow-hidden">
       <button
         onClick={() => setExpanded(!expanded)}
-        className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-gray-700/30 transition-colors"
+        className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-gray-700/30 transition-colors cursor-pointer"
       >
-        <div>
-          <span className="text-white font-medium text-sm">{project.name}</span>
-          <span className="ml-3 text-xs text-purple-400 font-medium bg-purple-500/10 border border-purple-500/20 rounded-full px-2 py-0.5">
+        <div className="flex items-center gap-3 flex-wrap">
+          <span className="text-white font-medium text-sm min-w-0 whitespace-normal">{project.name}</span>
+          <span className="text-xs text-purple-400 font-medium bg-purple-500/10 border border-purple-500/20 rounded-full px-2 py-0.5">
             {project.role}
           </span>
         </div>
@@ -70,11 +70,21 @@ function ExperienceCard({ exp, index }) {
             <h3 className="text-xl font-bold text-white">{exp.role}</h3>
             <div className="flex flex-wrap items-center gap-3 mt-1">
               <span className="text-purple-400 font-semibold">{exp.company}</span>
-              <span
-                className={`text-xs font-medium border rounded-full px-2 py-0.5 ${badgeColors[index % 3]}`}
-              >
-                {exp.type}
-              </span>
+              {(() => {
+                // Choose a consistent badge color for internships (and variations),
+                // otherwise fallback to the color based on the index to preserve variety.
+                const typeKey = (exp.type || "").toLowerCase();
+                let colorIndex = index % 3;
+                if (typeKey.includes("intern")) colorIndex = 0;
+                else if (typeKey.includes("full") || typeKey.includes("permanent")) colorIndex = 1;
+                else if (typeKey.includes("contract") || typeKey.includes("freelance") || typeKey.includes("part")) colorIndex = 2;
+
+                return (
+                  <span className={`text-xs font-medium border rounded-full px-2 py-0.5 ${badgeColors[colorIndex]}`}>
+                    {exp.type}
+                  </span>
+                );
+              })()}
             </div>
           </div>
           <div className="text-right text-sm text-gray-500">
@@ -95,14 +105,14 @@ function ExperienceCard({ exp, index }) {
           <div>
             <button
               onClick={() => setShowProjects(!showProjects)}
-              className="flex items-center gap-2 text-sm font-medium text-purple-400 hover:text-purple-300 transition-colors mb-3"
+              className="flex items-center gap-2 text-sm font-medium text-purple-400 hover:cursor-pointer hover:text-purple-300 transition-colors mb-3"
             >
               {showProjects ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
               {showProjects ? "Hide" : "Show"} Projects ({exp.projects.length})
             </button>
             {showProjects && (
               <div className="space-y-3">
-                {exp.projects.map((p, i) => (
+                {exp.projects?.map((p, i) => (
                   <ProjectCard key={i} project={p} />
                 ))}
               </div>
